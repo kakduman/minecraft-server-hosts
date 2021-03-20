@@ -1,0 +1,12 @@
+Location,Host,Plan,Memory,MSPT,Link,Node
+GLOBAL,Baseline,G4400,4GB,404.935,,
+US,PebbleHost,Premium (9900K),4GB,1262.282,,
+US,EnviroMC,Budget (2276G),4GB,792.345,,
+EU,Birdflop,Premium (3900),4GB,236.92,,
+US,Birdflop,Elite (5950X),4GB,183.732,,
+US,PebbleHost,Budget (1630v3),3GB,869.427,,
+US,DedicatedMC,High-End (3900X),10GB,278.885,,
+EU,DedicatedMC,High-End (5950X),10GB,162.642,,
+EU,EnviroMC,Premium (5950X),10GB,240.52,,
+EU,VolcanoHosting,Premium (2643v2),4GB,678.365,,
+ASIA,Skynode,STANDARD-01 (3700X),2GB,407.11,,
