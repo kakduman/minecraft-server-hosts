@@ -124,7 +124,7 @@ def standardize():
                     if i > 0:
                         plan = row[0]
                         st_score = round(float(row[1])*st_value)
-                        st_me = round(float(row[2])*st_value)
+                        st_me = round(float(row[2])*st_value,2)
                         print(f"{plan},{st_score},{st_me}")
                         csv_writer.writerow([plan, st_score, st_me])
                     i += 1
@@ -144,7 +144,7 @@ def standardize():
                     if i > 0:
                         plan = row[0]
                         st_score = round(float(row[1])*st_value)
-                        st_me = round(float(row[2])*st_value)
+                        st_me = round(float(row[2])*st_value,2)
                         print(f"{plan},{st_score},{st_me}")
                         csv_writer.writerow([plan, st_score, st_me])
                     i += 1
