@@ -73,7 +73,7 @@ def json_to_csv():
     with open('multi-thread.json', 'r') as file:
         data = json.load(file)
     file.close()
-    with open('multi-thread-results.csv', 'w', newline="") as file:
+    with open('multi-thread-temp.csv', 'w', newline="") as file:
         csv_writer = csv.writer(file, delimiter=',')
         csv_writer.writerow(['Plan', 'CPS', 'ME'])
         for host in data["hosts"]:
@@ -91,7 +91,7 @@ def json_to_csv():
     with open('single-thread.json', 'r') as file:
         data = json.load(file)
     file.close()
-    with open('single-thread-results.csv', 'w', newline="") as file:
+    with open('single-thread-temp.csv', 'w', newline="") as file:
         csv_writer = csv.writer(file, delimiter=',')
         csv_writer.writerow(['Plan', 'TPS', 'ME'])
         for host in data["hosts"]:
@@ -107,5 +107,48 @@ def json_to_csv():
             plan = host["name"]
             csv_writer.writerow([plan, mean, margin_of_error])
 
+def standardize():
+    with open('multi-thread-temp.csv', 'r') as file:
+        csv_reader = csv.reader(file, delimiter=',')
+        for row in csv_reader:
+            if row[0] == "GLOBAL Baseline G4400 4GB":
+                st_value = 100/float(row[1])
+        i = 0
+        with open('multi-thread-temp.csv', 'r') as file:
+            csv_reader = csv.reader(file, delimiter=',')
+            with open('multi-thread-results.csv', 'w', newline='') as file:
+                csv_writer = csv.writer(file, delimiter=',')
+                for row in csv_reader:
+                    if i == 0:
+                        csv_writer.writerow(['Plan', 'Score', 'ME'])
+                    if i > 0:
+                        plan = row[0]
+                        st_score = round(float(row[1])*st_value)
+                        st_me = round(float(row[2])*st_value)
+                        print(f"{plan},{st_score},{st_me}")
+                        csv_writer.writerow([plan, st_score, st_me])
+                    i += 1
+    with open('single-thread-temp.csv', 'r') as file:
+        csv_reader = csv.reader(file, delimiter=',')
+        for row in csv_reader:
+            if row[0] == "GLOBAL Baseline G4400 4GB":
+                st_value = 100/float(row[1])
+        i = 0
+        with open('single-thread-temp.csv', 'r') as file:
+            csv_reader = csv.reader(file, delimiter=',')
+            with open('single-thread-results.csv', 'w', newline='') as file:
+                csv_writer = csv.writer(file, delimiter=',')
+                for row in csv_reader:
+                    if i == 0:
+                        csv_writer.writerow(['Plan', 'Score', 'ME'])
+                    if i > 0:
+                        plan = row[0]
+                        st_score = round(float(row[1])*st_value)
+                        st_me = round(float(row[2])*st_value)
+                        print(f"{plan},{st_score},{st_me}")
+                        csv_writer.writerow([plan, st_score, st_me])
+                    i += 1
+
 csv_to_json()
 json_to_csv()
+standardize()
