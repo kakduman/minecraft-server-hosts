@@ -3,8 +3,11 @@ This repository aims to benchmark the performance of various hosts in order to o
 
 # Methodology
 The single-thread test observes the inverse of MSPT (i.e. TPS) while the server is ticking 2000 minecarts.
+
 The multi-thread test observes the chunk generation speed while the server is generating 3 overworlds simultaneously using Chunky.
+
 Results are standardized by setting the dedicated G4400 machine to a score of 100. The G4400 was chosen to standardize results because I had an old G4400 computer lying around, and the processor gives consistent results since datacenter ambient temperature, node load, etc. cannot impact performance.
+
 95% confidence intervals are generated with a t-interval. Results are assumed to be normally distributed across nodes and times of day. Confidence intervals are only available when 3+ measurements of a certain plan have been analyzed. Do NOT attempt to make comparisons between hosts if 1 or more of them does not have a confidence interval present. More testing is needed to generate a significant comparison.
 
 # Results
