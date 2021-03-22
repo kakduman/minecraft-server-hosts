@@ -10,7 +10,8 @@ Results are standardized by setting the dedicated G4400 machine to a score of 10
 # Results
 ![image](https://user-images.githubusercontent.com/43528123/112066487-6c82be00-8b34-11eb-9521-5a49fe95cbe9.png)
 ![image](https://user-images.githubusercontent.com/43528123/112066502-74426280-8b34-11eb-88ed-56b12e282dc4.png)
-To emphasize: Confidence intervals are only available when 3+ measurements of a certain plan have been analyzed. Do **NOT** attempt to make comparisons between hosts if 1 or more of them does not have a confidence interval present. More testing is needed to generate a significant comparison.
+
+Do **NOT** attempt to make comparisons between hosts if 1 or more of them does not have a confidence interval present. Confidence intervals are only available when 3+ measurements of a certain plan have been analyzed. More testing is needed to generate a significant comparison.
 
 
 # Contributing
