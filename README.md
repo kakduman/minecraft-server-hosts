@@ -11,8 +11,8 @@ Results are standardized by setting the dedicated G4400 machine to a score of 10
 95% confidence intervals are generated with a t-interval. Results are assumed to be normally distributed across nodes and times of day. Confidence intervals are only available when 3+ measurements of a certain plan have been analyzed. Do NOT attempt to make comparisons between hosts if 1 or more of them does not have a confidence interval present. More testing is needed to generate a significant comparison.
 
 # Results
-![image](https://user-images.githubusercontent.com/43528123/112066487-6c82be00-8b34-11eb-9521-5a49fe95cbe9.png)
-![image](https://user-images.githubusercontent.com/43528123/112066502-74426280-8b34-11eb-88ed-56b12e282dc4.png)
+![image](https://user-images.githubusercontent.com/43528123/112067205-af916100-8b35-11eb-959e-f35eefc67ceb.png)
+![image](https://user-images.githubusercontent.com/43528123/112067231-b91ac900-8b35-11eb-9d2c-7427e5c7a286.png)
 
 The same disclaimer from earlier for emphasis: do **NOT** attempt to make comparisons between hosts if 1 or more of them does not have a confidence interval present. Confidence intervals are only available when 3+ measurements of a certain plan have been analyzed. More testing is needed to generate a significant comparison.
 
