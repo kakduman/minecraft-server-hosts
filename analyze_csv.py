@@ -49,7 +49,7 @@ def csv_to_json():
                         if host["name"] == plan:
                             host["trials"].append({
                                 "mspt": float(row[4]),
-                                "tps": 1/float(row[4])
+                                "tps": 1000/float(row[4])
                             })
                             host_found = True
                     if host_found == False:
@@ -80,7 +80,6 @@ def json_to_csv():
             cps_list = []
             margin_of_error = 0
             for trial in host["trials"]:
-                print(f'{host["name"]} scored {trial["cps"]}')
                 cps_list.append(float(trial["cps"]))
             if len(cps_list) >= 3:
                 interval = st.t.interval(alpha=0.95, df=len(cps_list)-1, loc=numpy.mean(cps_list), scale=st.sem(cps_list))
@@ -98,7 +97,6 @@ def json_to_csv():
             tps_list = []
             margin_of_error = 0
             for trial in host["trials"]:
-                print(f'{host["name"]} scored {trial["tps"]}')
                 tps_list.append(float(trial["tps"]))
             if len(cps_list) >= 3:
                 interval = st.t.interval(alpha=0.95, df=len(tps_list)-1, loc=numpy.mean(tps_list), scale=st.sem(tps_list))
@@ -125,7 +123,6 @@ def standardize():
                         plan = row[0]
                         st_score = round(float(row[1])*st_value)
                         st_me = round(float(row[2])*st_value,2)
-                        print(f"{plan},{st_score},{st_me}")
                         csv_writer.writerow([plan, st_score, st_me])
                     i += 1
     with open('single-thread-temp.csv', 'r') as file:
@@ -145,7 +142,6 @@ def standardize():
                         plan = row[0]
                         st_score = round(float(row[1])*st_value)
                         st_me = round(float(row[2])*st_value,2)
-                        print(f"{plan},{st_score},{st_me}")
                         csv_writer.writerow([plan, st_score, st_me])
                     i += 1
 

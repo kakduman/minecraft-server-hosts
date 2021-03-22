@@ -45,27 +45,21 @@ elif not multi:
         i = -10
         median_mspt_list = []
         gen_started = False
-        print("test1")
         for line in file:
-            print("t")
             if not gen_started:
-                print("t")
                 if "Timings Reset" in line:
                     gen_started = True
-                    print("test2")
             elif i < 110:
                 if i < 0:
                     if "âš¡" in line or "?" in line:
                         if ';' in line:
                             i += 1
-                            print(i)
                 else:
                     if "âš¡" in line or "?" in line:
                         if ';' in line:
                             i += 1
-                            print(i)
                             line = line.replace("\n", "")
-                            med = float(line.split("/")[6])
+                            med = float(line.split("/")[5])
                             median_mspt_list.append(med)
 
         median_mspt_dist = statistics.NormalDist.from_samples(median_mspt_list)

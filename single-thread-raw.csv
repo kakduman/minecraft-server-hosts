@@ -1,12 +1,18 @@
 Location,Host,Plan,Memory,MSPT,Link,Node
-GLOBAL,Baseline,G4400,4GB,404.935,,
-US,PebbleHost,Premium (9900K),4GB,1262.282,,
-US,EnviroMC,Budget (2276G),4GB,792.345,,
-EU,Birdflop,Premium (3900),4GB,236.92,,
-US,Birdflop,Elite (5950X),4GB,183.732,,
-US,PebbleHost,Budget (1630v3),3GB,869.427,,
-US,DedicatedMC,High-End (3900X),10GB,278.885,,
-EU,DedicatedMC,High-End (5950X),10GB,162.642,,
-EU,EnviroMC,Premium (5950X),10GB,240.52,,
-EU,VolcanoHosting,Premium (2643v2),4GB,678.365,,
-ASIA,Skynode,STANDARD-01 (3700X),2GB,407.11,,
+GLOBAL,Baseline,G4400,4GB,375.821,https://drive.google.com/file/d/1f81A7DJ1Xl7ZHGrimLypTFWU30BnqM-O/view?usp=sharing,N/A
+NA,PebbleHost,Premium (9900K),4GB,750.216,https://drive.google.com/file/d/1H7bArreVW_5JgSqCU2dHj1HJweFNa8yf/view?usp=sharing,NA444
+NA,EnviroMC,Budget (2276G),4GB,559.926,https://drive.google.com/file/d/1YFLYkbBkF_2dMXvz7DtivBG3iYBZLLvW/view?usp=sharing,
+EU,Birdflop,Premium (3900),4GB,209.075,https://drive.google.com/file/d/1mswxvKlPpu6yGLagYCvFh-wokKZ99L08/view?usp=sharing,Hippohips - EU
+NA,Birdflop,Elite (5950X),4GB,174.37,https://drive.google.com/file/d/1BEbT-f8hL-_UGC2qyxyp9ZLJG0psYsQw/view?usp=sharing,Goosegills - NYC
+NA,DedicatedMC,High-End (3900X),10GB,269.205,https://drive.google.com/file/d/1k0PXwOc-evG4E3ceFu-2VL54qjVQv0ch/view?usp=sharing,
+EU,DedicatedMC,High-End (5950X),10GB,151.425,https://drive.google.com/file/d/1vJPcSJ_P1jLEDC64ZYQJ0K0WZtkBAUzp/view?usp=sharing,
+EU,EnviroMC,Premium (5950X),10GB,224.745,https://drive.google.com/file/d/1iegDkNEadk4wjmz_9kh89-xrSLInNgwb/view?usp=sharing,EU-06
+EU,VolcanoHosting,Premium (2643v2),4GB,545.86,https://drive.google.com/file/d/1CU9rYrbCx97jIF55CPkYRD9YaY1DkpAD/view?usp=sharing,EU.1
+ASIA,Skynode,STANDARD-01 (3700X),2GB,319.696,https://drive.google.com/file/d/15dFZ2w6czGAmhrjaqC8yCTpIEpcglvV3/view?usp=sharing,SG-SGP04
+EU,PebbleHost,Premium (9900K),16GB,719.025,https://drive.google.com/file/d/1-3097uagDnRL-RBm111JAV7lJxng3yLa/view?usp=sharing,EU193
+NA,PebbleHost,Premium (9900K),16GB,436.513,https://drive.google.com/file/d/1OzL8IVtQDXK3tR_NT_0Mz2YCiXPB8PTV/view?usp=sharing,NA507
+NA,PebbleHost,Extreme (9900K),6GB,861.615,https://drive.google.com/file/d/1KK9BJ0OJ1e39H9XZefymHRNOzHOjKp8q/view?usp=sharing,NA462
+EU,PebbleHost,Budget (1630v3),25GB,587.198,https://drive.google.com/file/d/1x_W-X8ipnfkvfaWn9pprN4ziPrT06D-o/view?usp=sharing,EU87
+NA,PebbleHost,Budget (1630v3),25GB,481.495,https://drive.google.com/file/d/1jlBIMMgVtIh0G2ZW1JRU9kHKajwXUYnz/view?usp=sharing,NA110
+NA,Daemex,Beta (L5640),4GB,807.721,https://drive.google.com/file/d/1Wz0c4ZZz6NfWlnNNhiLRIb8oZKoL0wxu/view?usp=sharing,taurus-dxus-01
+GLOBAL,Baseline,G4400,4GB,369.069,https://drive.google.com/file/d/1PTpqz4-Z7KyMFI7i64sS2QGnYwkYzcXW/view?usp=sharing,N/A
