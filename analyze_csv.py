@@ -98,7 +98,7 @@ def json_to_csv():
             margin_of_error = 0
             for trial in host["trials"]:
                 tps_list.append(float(trial["tps"]))
-            if len(cps_list) >= 3:
+            if len(tps_list) >= 3:
                 interval = st.t.interval(alpha=0.95, df=len(tps_list)-1, loc=numpy.mean(tps_list), scale=st.sem(tps_list))
                 margin_of_error = round(numpy.mean(tps_list) - interval[0],2)
             mean = round(numpy.mean(tps_list),2)
