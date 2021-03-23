@@ -15,7 +15,7 @@ Results are standardized by setting the dedicated G4400 machine to a score of 10
 ### Disclaimers 
 - Do **NOT** attempt to make comparisons between hosts if 1 or more of them does not have a confidence interval present. Confidence intervals are only available when 3+ measurements of a certain plan have been analyzed. More testing is needed to generate a significant comparison.
 - All results were analyzed by Purpur#7580, the owner of Birdflop. All tests were conducted with the same methodology/setup, but a disclaimer for this information is still important.
-- Confidence intervals assume that results are normally distributed. In reality, results may not be normally distributed, so the confidence intervals may not be correct.
+- Confidence intervals assume that results are normally distributed. In reality, results may not be normally distributed, so the confidence intervals may be inaccurate
 
 # Contributing
 ### Testing
