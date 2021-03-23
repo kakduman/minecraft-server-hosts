@@ -3,6 +3,7 @@ import numpy
 import scipy.stats as st
 import json
 import requests
+from operator import itemgetter
 
 def csv_to_json():
     response = requests.get(f"https://api.exchangeratesapi.io/latest?base=USD")
@@ -25,12 +26,13 @@ def csv_to_json():
                     price_string = row[4]
                     if price_string == "N/A":
                         price = "N/A"
+                        price_num = -1
                     else:
                         price_units = price_string.split(" ")[1]
-                        price = round(float(price_string.split(" ")[0]), 2)
+                        price_num = round(float(price_string.split(" ")[0]), 2)
                         if price_units != "USD":
-                            price = round(float(price_string.split(" ")[0]) / json_response["rates"][price_units], 2)
-                        price = f"${price}"
+                            price_num = round(float(price_string.split(" ")[0]) / json_response["rates"][price_units], 2)
+                        price = f"${price_num}"
                         if price[len(price)-2] == ".":
                             price = f"{price}0"
                     plan = f"{row[0]} {row[1]} {row[2]} {row[3]} ({price})"
@@ -43,16 +45,17 @@ def csv_to_json():
                                     trial["cps"] = (trial["cps"] + float(row[5])) / trial["samples"]
                                     trial_added = True
                                     host_found = True
-                            if trial_added == False:
+                            if not trial_added:
                                 host["trials"].append({
                                     "cps": float(row[5]),
                                     "node": row[7],
                                     "samples": 1
                                 })
                                 host_found = True
-                    if host_found == False:
+                    if not host_found:
                         data["hosts"].append({
                             "name": plan,
+                            "price": price_num,
                             "trials": [
                                 {
                                     "cps": float(row[5]),
@@ -63,6 +66,7 @@ def csv_to_json():
                         })
                         i += 1
                     with open('multi-thread.json', 'w') as file:
+                        data['hosts'].sort(key=itemgetter('price'), reverse=True)
                         file.write(json.dumps(data, indent=2))
                     file.close()
                 line_count += 1
@@ -79,12 +83,13 @@ def csv_to_json():
                     price_string = row[4]
                     if price_string == "N/A":
                         price = "N/A"
+                        price_num = -1
                     else:
                         price_units = price_string.split(" ")[1]
-                        price = round(float(price_string.split(" ")[0]), 2)
+                        price_num = round(float(price_string.split(" ")[0]), 2)
                         if price_units != "USD":
-                            price = round(json_response["rates"]["USD"] * float(price_string.split(" ")[0]), 2)
-                        price = f"${price}"
+                            price_num = round(json_response["rates"]["USD"] * float(price_string.split(" ")[0]), 2)
+                        price = f"${price_num}"
                         if price[len(price)-2] == ".":
                             price = f"{price}0"
                     plan = f"{row[0]} {row[1]} {row[2]} {row[3]} ({price})"
@@ -98,7 +103,7 @@ def csv_to_json():
                                     trial["tps"] = 1000/trial["mspt"]
                                     trial_added = True
                                     host_found = True
-                            if trial_added == False:
+                            if not trial_added:
                                 host["trials"].append({
                                     "mspt": float(row[5]),
                                     "tps": 1000/float(row[5]),
@@ -106,9 +111,10 @@ def csv_to_json():
                                     "samples": 1
                                 })
                                 host_found = True
-                    if host_found == False:
+                    if not host_found:
                         data["hosts"].append({
                             "name": plan,
+                            "price": price_num,
                             "trials": [
                                 {
                                     "mspt": float(row[5]),
@@ -120,6 +126,7 @@ def csv_to_json():
                         })
                         i += 1
                     with open('single-thread.json', 'w') as file:
+                        data['hosts'].sort(key=itemgetter('price'), reverse=True)
                         file.write(json.dumps(data, indent=2))
                     file.close()
                 line_count += 1
@@ -160,6 +167,7 @@ def json_to_csv():
             plan = host["name"]
             csv_writer.writerow([plan, mean, margin_of_error])
 
+
 def standardize():
     print("Data successfully analyzed. Standardizing data...")
     with open('multi-thread-temp.csv', 'r') as file:
@@ -197,10 +205,11 @@ def standardize():
                     if i > 0:
                         plan = row[0]
                         st_score = round(float(row[1])*st_value)
-                        st_me = round(float(row[2])*st_value,2)
+                        st_me = round(float(row[2])*st_value, 2)
                         csv_writer.writerow([plan, st_score, st_me])
                     i += 1
     print("Data successfully standardized. Please view the results in single-thread-results.csv and multi-thread-results.csv")
+
 
 csv_to_json()
 json_to_csv()
