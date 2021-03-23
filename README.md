@@ -49,5 +49,5 @@ Thank you to the following for their help expanding this experiment:
 
 # Additional Notes
 - SkyNode failed the multi-thread test because the server kept crashing due to insufficient overhead. Support refused to lower Xmx without lowering the container size, add swap overhead, or add memory overhead.
-- Currently waiting on RetroNode servers to test. Support says that they are out of stock right now.
+- Currently waiting on RetroNode servers to test. Support says that they are out of stock right now, but that they will provide servers when stock arrives.
 - Currently waiting on a response from HeavyNode regarding servers to test.
