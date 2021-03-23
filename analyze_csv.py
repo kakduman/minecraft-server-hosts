@@ -31,6 +31,8 @@ def csv_to_json():
                         if price_units != "USD":
                             price = round(float(price_string.split(" ")[0]) / json_response["rates"][price_units], 2)
                         price = f"${price}"
+                        if price[len(price)-2] == ".":
+                            price = f"{price}0"
                     plan = f"{row[0]} {row[1]} {row[2]} {row[3]} ({price})"
                     for host in data["hosts"]:
                         if host["name"] == plan:
@@ -81,10 +83,10 @@ def csv_to_json():
                         price_units = price_string.split(" ")[1]
                         price = round(float(price_string.split(" ")[0]), 2)
                         if price_units != "USD":
-                            response = requests.get(f"https://api.exchangeratesapi.io/latest?base={price_units}")
-                            json_response = response.json()
                             price = round(json_response["rates"]["USD"] * float(price_string.split(" ")[0]), 2)
                         price = f"${price}"
+                        if price[len(price)-2] == ".":
+                            price = f"{price}0"
                     plan = f"{row[0]} {row[1]} {row[2]} {row[3]} ({price})"
                     for host in data["hosts"]:
                         if host["name"] == plan:
