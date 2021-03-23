@@ -4,14 +4,14 @@ This repository aims to benchmark the performance of various hosts in order to o
 # Methodology
 The single-thread test observes the inverse of MSPT (i.e. TPS) while the server is ticking 2000 minecarts.
 
-The multi-thread test observes the chunk generation speed while the server is generating 3 overworlds simultaneously using Chunky.
+The multi-thread test observes the chunk generation speed while the server is generating 3 overworlds simultaneously using Chunky. If the server crashes due to insufficient overhead, support is contacted to ask to resolve the issue either by (1) modifying heap size, (2) lowering Xmx without lowering the container memory, (3) adding memory for overhead, or (4) adding swap for overhead. If support declines all requests to resolve the issue, a score of 0 is issued.
 
 Results are standardized by setting the dedicated G4400 machine to a score of 100. The G4400 was chosen to standardize results because I had an old G4400 computer lying around, and the processor gives consistent results since datacenter ambient temperature, node load, etc. cannot impact performance.
 
 95% confidence intervals are generated with a t-interval. Results are assumed to be normally distributed across nodes and times of day. Confidence intervals are only available when 3+ measurements of a certain plan have been analyzed. Do NOT attempt to make comparisons between hosts if 1 or more of them does not have a confidence interval present. More testing is needed to generate a significant comparison.
 
 # Results
-![image](https://user-images.githubusercontent.com/43528123/112092545-b59f3600-8b65-11eb-87f6-3bb91b934c60.png)
+![image](https://user-images.githubusercontent.com/43528123/112094191-cdc48480-8b68-11eb-87f2-0d70dbbcce18.png)
 
 The same disclaimer from earlier for emphasis: do **NOT** attempt to make comparisons between hosts if 1 or more of them does not have a confidence interval present. Confidence intervals are only available when 3+ measurements of a certain plan have been analyzed. More testing is needed to generate a significant comparison.
 
@@ -34,14 +34,20 @@ The same disclaimer from earlier for emphasis: do **NOT** attempt to make compar
 Please feel free to create a PR for other aspects of this test that could be improved. It is far from perfect.
 
 # Contributors
-ALL contributors are listed below to show accountability.
+All contributors are listed below to show appreciation and accountability.
 
 Thank you to the following for their help expanding this experiment:
 - Jay from [PebbleHost](https://pebblehost.com) for various PebbleHost servers.
 - Tehlo from [DedicatedMC](https://dedicatedmc.io) for various DedicatedMC servers.
 - Nerd from [EnviroMC](https://enviromc.com) for various EnviroMC servers.
 - Valentijn from [Volcano Hosting](https://volcanohosting.net) for the Volcano Hosting server.
-- sprit#0363 for the Daemex server
+- sprit#0363 for the Daemex server.
 - SeaSon#5421 for the SkyNode server.
+- JustDoom#1120 for the 4GB PebbleHost Premium server.
+- DefineOutside#4497 for the 3GB PebbleHost Budget server.
 - Purpur from [Birdflop Hosting](https://birdflop.com) for the Birdflop servers and the baseline dedicated server.
-- Various people in the [Birdflop Hosting Discord](https://discord.gg/zsz3PzT) for all other servers.
+
+# Additional Notes
+- SkyNode failed the multi-thread test because the server kept crashing due to insufficient overhead. Support refused to lower Xmx without lowering the container size, add swap overhead, or add memory overhead.
+- Currently waiting on RetroNode servers to test. Support says that they are out of stock right now.
+- Currently waiting on a response from HeavyNode regarding servers to test.
