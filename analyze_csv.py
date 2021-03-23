@@ -2,8 +2,16 @@ import csv
 import numpy
 import scipy.stats as st
 import json
+import requests
 
 def csv_to_json():
+    response = requests.get(f"https://api.exchangeratesapi.io/latest?base=USD")
+    if response.status_code == 200:
+        print("Currency conversions API queried successfully. Analyzing data...")
+    else:
+        print(f"There was an error querying the currency conversions API. Error code: {response.status_code}")
+        return
+    json_response = response.json()
     with open('multi-thread-raw.csv', "r") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=",")
         line_count = 0
@@ -13,19 +21,41 @@ def csv_to_json():
             for row in csv_reader:
                 if line_count > 0:
                     host_found = False
-                    plan = f"{row[0]} {row[1]} {row[2]} {row[3]}"
+                    node = row[7]
+                    price_string = row[4]
+                    if price_string == "N/A":
+                        price = "N/A"
+                    else:
+                        price_units = price_string.split(" ")[1]
+                        price = round(float(price_string.split(" ")[0]), 2)
+                        if price_units != "USD":
+                            price = round(float(price_string.split(" ")[0]) / json_response["rates"][price_units], 2)
+                        price = f"${price}"
+                    plan = f"{row[0]} {row[1]} {row[2]} {row[3]} ({price})"
                     for host in data["hosts"]:
                         if host["name"] == plan:
-                            host["trials"].append({
-                                "cps": float(row[4])
-                            })
-                            host_found = True
+                            trial_added = False
+                            for trial in host["trials"]:
+                                if trial["node"] == node and trial["node"] != "N/A":
+                                    trial["samples"] = trial["samples"] + 1
+                                    trial["cps"] = (trial["cps"] + float(row[5])) / trial["samples"]
+                                    trial_added = True
+                                    host_found = True
+                            if trial_added == False:
+                                host["trials"].append({
+                                    "cps": float(row[5]),
+                                    "node": row[7],
+                                    "samples": 1
+                                })
+                                host_found = True
                     if host_found == False:
                         data["hosts"].append({
                             "name": plan,
                             "trials": [
                                 {
-                                    "cps": float(row[4])
+                                    "cps": float(row[5]),
+                                    "node": row[7],
+                                    "samples": 1
                                 }
                             ]
                         })
@@ -34,7 +64,6 @@ def csv_to_json():
                         file.write(json.dumps(data, indent=2))
                     file.close()
                 line_count += 1
-        print(f'Processed {line_count} lines.')
     with open('single-thread-raw.csv', "r") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=",")
         line_count = 0
@@ -44,21 +73,46 @@ def csv_to_json():
             for row in csv_reader:
                 if line_count > 0:
                     host_found = False
-                    plan = f"{row[0]} {row[1]} {row[2]} {row[3]}"
+                    node = row[7]
+                    price_string = row[4]
+                    if price_string == "N/A":
+                        price = "N/A"
+                    else:
+                        price_units = price_string.split(" ")[1]
+                        price = round(float(price_string.split(" ")[0]), 2)
+                        if price_units != "USD":
+                            response = requests.get(f"https://api.exchangeratesapi.io/latest?base={price_units}")
+                            json_response = response.json()
+                            price = round(json_response["rates"]["USD"] * float(price_string.split(" ")[0]), 2)
+                        price = f"${price}"
+                    plan = f"{row[0]} {row[1]} {row[2]} {row[3]} ({price})"
                     for host in data["hosts"]:
                         if host["name"] == plan:
-                            host["trials"].append({
-                                "mspt": float(row[4]),
-                                "tps": 1000/float(row[4])
-                            })
-                            host_found = True
+                            trial_added = False
+                            for trial in host["trials"]:
+                                if trial["node"] == node and trial["node"] != "N/A":
+                                    trial["samples"] = trial["samples"] + 1
+                                    trial["mspt"] = (trial["mspt"] + float(row[5])) / trial["samples"]
+                                    trial["tps"] = 1000/trial["mspt"]
+                                    trial_added = True
+                                    host_found = True
+                            if trial_added == False:
+                                host["trials"].append({
+                                    "mspt": float(row[5]),
+                                    "tps": 1000/float(row[5]),
+                                    "node": node,
+                                    "samples": 1
+                                })
+                                host_found = True
                     if host_found == False:
                         data["hosts"].append({
                             "name": plan,
                             "trials": [
                                 {
-                                    "mspt": float(row[4]),
-                                    "tps": 1000/float(row[4])
+                                    "mspt": float(row[5]),
+                                    "tps": 1000/float(row[5]),
+                                    "node": node,
+                                    "samples": 1
                                 }
                             ]
                         })
@@ -67,7 +121,6 @@ def csv_to_json():
                         file.write(json.dumps(data, indent=2))
                     file.close()
                 line_count += 1
-        print(f'Processed {line_count} lines.')
 
 def json_to_csv():
     with open('multi-thread.json', 'r') as file:
@@ -106,10 +159,11 @@ def json_to_csv():
             csv_writer.writerow([plan, mean, margin_of_error])
 
 def standardize():
+    print("Data successfully analyzed. Standardizing data...")
     with open('multi-thread-temp.csv', 'r') as file:
         csv_reader = csv.reader(file, delimiter=',')
         for row in csv_reader:
-            if row[0] == "GLOBAL Baseline G4400 4GB":
+            if row[0] == "GLOBAL Baseline G4400 4GB (N/A)":
                 st_value = 100/float(row[1])
         i = 0
         with open('multi-thread-temp.csv', 'r') as file:
@@ -128,7 +182,7 @@ def standardize():
     with open('single-thread-temp.csv', 'r') as file:
         csv_reader = csv.reader(file, delimiter=',')
         for row in csv_reader:
-            if row[0] == "GLOBAL Baseline G4400 4GB":
+            if row[0] == "GLOBAL Baseline G4400 4GB (N/A)":
                 st_value = 100/float(row[1])
         i = 0
         with open('single-thread-temp.csv', 'r') as file:
@@ -144,6 +198,7 @@ def standardize():
                         st_me = round(float(row[2])*st_value,2)
                         csv_writer.writerow([plan, st_score, st_me])
                     i += 1
+    print("Data successfully standardized. Please view the results in single-thread-results.csv and multi-thread-results.csv")
 
 csv_to_json()
 json_to_csv()
