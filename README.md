@@ -34,7 +34,7 @@ The same disclaimer from earlier for emphasis: do **NOT** attempt to make compar
 Please feel free to create a PR for other aspects of this test that could be improved. It is far from perfect.
 
 # Contributors
-ALL contributors are listed below to show accountability.
+All contributors are listed below to show appreciation and accountability.
 
 Thank you to the following for their help expanding this experiment:
 - Jay from [PebbleHost](https://pebblehost.com) for various PebbleHost servers.
@@ -45,3 +45,8 @@ Thank you to the following for their help expanding this experiment:
 - SeaSon#5421 for the SkyNode server.
 - Purpur from [Birdflop Hosting](https://birdflop.com) for the Birdflop servers and the baseline dedicated server.
 - Various people in the [Birdflop Hosting Discord](https://discord.gg/zsz3PzT) for all other servers.
+
+# Additional Notes
+- SkyNode failed the multi-thread test because the server kept crashing due to insufficient overhead. Support refused to lower Xmx without lowering the container size, add swap overhead, or add memory overhead.
+- Currently waiting on RetroNode servers to test. Support says that they are out of stock right now.
+- Currently waiting on a response from HeavyNode regarding servers to test.
