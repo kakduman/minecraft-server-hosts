@@ -4,7 +4,7 @@ This repository aims to benchmark the performance of various hosts in order to o
 # Methodology
 The single-thread test observes the inverse of MSPT (i.e. TPS) while the server is ticking 2000 minecarts.
 
-The multi-thread test observes the chunk generation speed while the server is generating 3 overworlds simultaneously using Chunky.
+The multi-thread test observes the chunk generation speed while the server is generating 3 overworlds simultaneously using Chunky. If the server crashes due to insufficient overhead, support is contacted to ask to resolve the issue either by (1) modifying heap size, (2) lowering Xmx without lowering the container memory, (3) adding memory for overhead, or (4) adding swap for overhead. If support declines all requests to resolve the issue, a score of 0 is issued.
 
 Results are standardized by setting the dedicated G4400 machine to a score of 100. The G4400 was chosen to standardize results because I had an old G4400 computer lying around, and the processor gives consistent results since datacenter ambient temperature, node load, etc. cannot impact performance.
 
