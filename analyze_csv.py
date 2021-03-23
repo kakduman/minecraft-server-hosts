@@ -88,7 +88,7 @@ def csv_to_json():
                         price_units = price_string.split(" ")[1]
                         price_num = round(float(price_string.split(" ")[0]), 2)
                         if price_units != "USD":
-                            price_num = round(json_response["rates"]["USD"] * float(price_string.split(" ")[0]), 2)
+                            price_num = round(float(price_string.split(" ")[0]) / json_response["rates"][price_units], 2)
                         price = f"${price_num}"
                         if price[len(price)-2] == ".":
                             price = f"{price}0"
