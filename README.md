@@ -44,6 +44,7 @@ Thank you to the following for their help expanding this experiment:
 - sprit#0363 for the Daemex server.
 - SeaSon#5421 for the SkyNode server.
 - JustDoom#1120 for the 4GB PebbleHost Premium server.
+- DefineOutside#4497 for the 3GB PebbleHost Budget server.
 - Purpur from [Birdflop Hosting](https://birdflop.com) for the Birdflop servers and the baseline dedicated server.
 
 # Additional Notes
