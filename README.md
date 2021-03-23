@@ -20,7 +20,7 @@ The same disclaimer from earlier for emphasis: do **NOT** attempt to make compar
 # Contributing
 ### Testing
 1. Wipe the target directory of the server you are testing.
-2. Upload and extract the [single-thread-setup.tar.gz](/single-thread-setup.tar.gz) file for single-thread tests, or the [multi-thread-setup.tar.gz](/multi-thread-setup.tar.gz) for multi-thread tests.
+2. Upload and extract the [single-thread-test.tar.gz](/single-thread-test.tar.gz) file for single-thread tests, or the [multi-thread-test.tar.gz](/multi-thread-test.tar.gz) for multi-thread tests.
 3. Create a scheduled task for executing `spark:tps` every minute. You can also create a hotkey or script to execute the command through the console if the host does not allow scheduled tasks
 4. Wait at least 2 hours, then stop the server.
 5. Clone this GitHub repository
