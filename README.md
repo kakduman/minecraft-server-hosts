@@ -11,8 +11,7 @@ Results are standardized by setting the dedicated G4400 machine to a score of 10
 95% confidence intervals are generated with a t-interval. Results are assumed to be normally distributed across nodes and times of day. Confidence intervals are only available when 3+ measurements of a certain plan have been analyzed. Do NOT attempt to make comparisons between hosts if 1 or more of them does not have a confidence interval present. More testing is needed to generate a significant comparison.
 
 # Results
-![image](https://user-images.githubusercontent.com/43528123/112067205-af916100-8b35-11eb-959e-f35eefc67ceb.png)
-![image](https://user-images.githubusercontent.com/43528123/112067231-b91ac900-8b35-11eb-9d2c-7427e5c7a286.png)
+![image](https://user-images.githubusercontent.com/43528123/112092545-b59f3600-8b65-11eb-87f6-3bb91b934c60.png)
 
 The same disclaimer from earlier for emphasis: do **NOT** attempt to make comparisons between hosts if 1 or more of them does not have a confidence interval present. Confidence intervals are only available when 3+ measurements of a certain plan have been analyzed. More testing is needed to generate a significant comparison.
 
@@ -20,7 +19,7 @@ The same disclaimer from earlier for emphasis: do **NOT** attempt to make compar
 # Contributing
 ### Testing
 1. Wipe the target directory of the server you are testing.
-2. Upload and extract the [single-thread-setup.tar.gz](/single-thread-setup.tar.gz) file for single-thread tests, or the [multi-thread-setup.tar.gz](/multi-thread-setup.tar.gz) for multi-thread tests.
+2. Upload and extract the [single-thread-test.tar.gz](/single-thread-test.tar.gz) file for single-thread tests, or the [multi-thread-test.tar.gz](/multi-thread-test.tar.gz) for multi-thread tests.
 3. Create a scheduled task for executing `spark:tps` every minute. You can also create a hotkey or script to execute the command through the console if the host does not allow scheduled tasks
 4. Wait at least 2 hours, then stop the server.
 5. Clone this GitHub repository
@@ -33,3 +32,16 @@ The same disclaimer from earlier for emphasis: do **NOT** attempt to make compar
 
 ### Other
 Please feel free to create a PR for other aspects of this test that could be improved. It is far from perfect.
+
+# Contributors
+ALL contributors are listed below to show accountability.
+
+Thank you to the following for their help expanding this experiment:
+- Jay from [PebbleHost](https://pebblehost.com) for various PebbleHost servers.
+- Tehlo from [DedicatedMC](https://dedicatedmc.io) for various DedicatedMC servers.
+- Nerd from [EnviroMC](https://enviromc.com) for various EnviroMC servers.
+- Valentijn from [Volcano Hosting](https://volcanohosting.net) for the Volcano Hosting server.
+- sprit#0363 for the Daemex server
+- SeaSon#5421 for the SkyNode server.
+- Purpur from [Birdflop Hosting](https://birdflop.com) for the Birdflop servers and the baseline dedicated server.
+- Various people in the [Birdflop Hosting Discord](https://discord.gg/zsz3PzT) for all other servers.
