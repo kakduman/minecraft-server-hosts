@@ -15,6 +15,8 @@ Results are standardized by setting the dedicated G4400 machine to a score of 10
 
 The same disclaimer from earlier for emphasis: do **NOT** attempt to make comparisons between hosts if 1 or more of them does not have a confidence interval present. Confidence intervals are only available when 3+ measurements of a certain plan have been analyzed. More testing is needed to generate a significant comparison.
 
+Another disclaimer that all results were analyzed by Purpur#7580, the owner of Birdflop. All tests were conducted with the same methodology, but a disclaimer for this information is still important.
+
 
 # Contributing
 ### Testing
