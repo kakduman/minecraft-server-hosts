@@ -41,10 +41,10 @@ Thank you to the following for their help expanding this experiment:
 - Tehlo from [DedicatedMC](https://dedicatedmc.io) for various DedicatedMC servers.
 - Nerd from [EnviroMC](https://enviromc.com) for various EnviroMC servers.
 - Valentijn from [Volcano Hosting](https://volcanohosting.net) for the Volcano Hosting server.
-- sprit#0363 for the Daemex server
+- sprit#0363 for the Daemex server.
 - SeaSon#5421 for the SkyNode server.
+- JustDoom#1120 for the 4GB PebbleHost Premium server.
 - Purpur from [Birdflop Hosting](https://birdflop.com) for the Birdflop servers and the baseline dedicated server.
-- Various people in the [Birdflop Hosting Discord](https://discord.gg/zsz3PzT) for all other servers.
 
 # Additional Notes
 - SkyNode failed the multi-thread test because the server kept crashing due to insufficient overhead. Support refused to lower Xmx without lowering the container size, add swap overhead, or add memory overhead.
