@@ -5,6 +5,7 @@ import json
 import requests
 from operator import itemgetter
 
+
 def csv_to_json():
     response = requests.get(f"https://api.exchangeratesapi.io/latest?base=USD")
     if response.status_code == 200:
@@ -131,6 +132,7 @@ def csv_to_json():
                     file.close()
                 line_count += 1
 
+
 def json_to_csv():
     with open('multi-thread.json', 'r') as file:
         data = json.load(file)
@@ -145,8 +147,8 @@ def json_to_csv():
                 cps_list.append(float(trial["cps"]))
             if len(cps_list) >= 3:
                 interval = st.t.interval(alpha=0.95, df=len(cps_list)-1, loc=numpy.mean(cps_list), scale=st.sem(cps_list))
-                margin_of_error = round(numpy.mean(cps_list) - interval[0],2)
-            mean = round(numpy.mean(cps_list),2)
+                margin_of_error = round(numpy.mean(cps_list) - interval[0], 2)
+            mean = round(numpy.mean(cps_list), 2)
             plan = host["name"]
             csv_writer.writerow([plan, mean, margin_of_error])
     with open('single-thread.json', 'r') as file:
@@ -162,8 +164,8 @@ def json_to_csv():
                 tps_list.append(float(trial["tps"]))
             if len(tps_list) >= 3:
                 interval = st.t.interval(alpha=0.95, df=len(tps_list)-1, loc=numpy.mean(tps_list), scale=st.sem(tps_list))
-                margin_of_error = round(numpy.mean(tps_list) - interval[0],2)
-            mean = round(numpy.mean(tps_list),2)
+                margin_of_error = round(numpy.mean(tps_list) - interval[0], 2)
+            mean = round(numpy.mean(tps_list), 2)
             plan = host["name"]
             csv_writer.writerow([plan, mean, margin_of_error])
 
