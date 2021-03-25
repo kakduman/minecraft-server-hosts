@@ -11,7 +11,7 @@ Results are standardized by setting the dedicated G4400 machine to a score of 10
 95% confidence intervals are generated with a t-interval. Results are assumed to be normally distributed across nodes and times of day. Confidence intervals are only available when 3+ measurements of a certain plan have been analyzed. Do NOT attempt to make comparisons between hosts if 1 or more of them does not have a confidence interval present. More testing is needed to generate a significant comparison.
 
 # Results
-![image](https://user-images.githubusercontent.com/43528123/112224821-dca74780-8bf9-11eb-8af8-d40b28a7af19.png)
+![image](https://user-images.githubusercontent.com/43528123/112277517-d8a61480-8c4f-11eb-965c-a5cc6610adf6.png)
 ### Disclaimers 
 - Do **NOT** attempt to make comparisons between hosts if 1 or more of them does not have a confidence interval present. Confidence intervals are only available when 3+ measurements of a certain plan have been analyzed. More testing is needed to generate a significant comparison.
 - All results were analyzed by Purpur#7580, the owner of Birdflop. All tests were conducted with the same methodology/setup, but a disclaimer for this information is still important.
@@ -20,16 +20,17 @@ Results are standardized by setting the dedicated G4400 machine to a score of 10
 # Contributing
 ### Testing
 1. Wipe the target directory of the server you are testing.
-2. Upload and extract the [single-thread-test.tar.gz](/single-thread-test.tar.gz) file for single-thread tests, or the [multi-thread-test.tar.gz](/multi-thread-test.tar.gz) file for multi-thread tests.
-3. Create a scheduled task for executing `spark:tps` every minute. You can also create a hotkey or script to execute the command through the console if the host does not allow scheduled tasks
-4. Wait at least 2 hours, then stop the server.
-5. Clone this GitHub repository
-6. Download latest.log into the cloned repository
-7. Execute analyze_logs.py. If there is an issue, please report it.
-8. Otherwise, type the output along with other relevant information (location, host, plan, memory, PERMANENT link to logs, and node) into the corresponding raw csv: [single-thread-raw.csv](/single-thread-raw.csv) for single-thread or [multi-thread-raw.csv](/multi-thread-raw.csv) for multi-thread.
-9. Execute analyze_csv.py. If there is an issue, please report it.
-10. [OPTIONAL] Update the Charts.xlsx spreadsheet to update the graph of performance comparisons. If you do not have Excel or otherwise cannot update the chart, please skip this step.
-11. Create a PR to the master branch.
+2. If the host allows for it, use Java 11 and PERMANENT Aikar's Flags. Do not edit any other variables.
+3. Upload and extract the [single-thread-test.tar.gz](/single-thread-test.tar.gz) file for single-thread tests, or the [multi-thread-test.tar.gz](/multi-thread-test.tar.gz) file for multi-thread tests.
+4. Create a scheduled task for executing `spark:tps` every minute. You can also create a hotkey or script to execute the command through the console if the host does not allow scheduled tasks
+5. Wait at least 2 hours, then stop the server.
+6. Clone this GitHub repository
+7. Download latest.log into the cloned repository
+8. Execute analyze_logs.py. If there is an issue, please report it.
+9. Otherwise, type the output along with other relevant information (location, host, plan, memory, PERMANENT link to logs, and node) into the corresponding raw csv: [single-thread-raw.csv](/single-thread-raw.csv) for single-thread or [multi-thread-raw.csv](/multi-thread-raw.csv) for multi-thread.
+10. Execute analyze_csv.py. If there is an issue, please report it.
+11. [OPTIONAL] Update the Charts.xlsx spreadsheet to update the graph of performance comparisons. If you do not have Excel or otherwise cannot update the chart, please skip this step.
+12. Create a PR to the master branch.
 
 ### Other
 Please feel free to create a PR for other aspects of this test that could be improved. It is far from perfect.
