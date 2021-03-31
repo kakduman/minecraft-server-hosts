@@ -11,10 +11,10 @@ Results are standardized by setting the dedicated G4400 machine to a score of 10
 95% confidence intervals are generated with a t-interval. Results are assumed to be normally distributed across nodes and times of day. Confidence intervals are only available when 3+ measurements of a certain plan have been analyzed. Do NOT attempt to make comparisons between hosts if 1 or more of them does not have a confidence interval present. More testing is needed to generate a significant comparison.
 
 # Results
-![image](https://user-images.githubusercontent.com/43528123/112934652-d75d6780-90e7-11eb-9d76-c873e61773d8.png)
+![image](https://user-images.githubusercontent.com/43528123/113198349-6d4ddb00-922b-11eb-82d5-3e92b1ee5b03.png)
 
 ### Disclaimers 
-- Do **NOT** attempt to make comparisons between hosts if 1 or more of them does not have a confidence interval present. Confidence intervals are only available when 3+ measurements of a certain plan have been analyzed. More testing is needed to generate a significant comparison.
+- Confidence intervals can only be generated if identical servers on at least 3 unique nodes of any host were tested. Only results with confidence intervals are shown in the above chart. Comparisons should not and can not be made between hosts with insufficient data for confidence intervals. If you would like to view all results, you can see [single-thread-results.csv](/single-thread-results.csv) for entity tick results, or [multi-thread-results.csv](/multi-thread-results.csv) for chunk generation results.
 - All results were analyzed by Purpur#7580, the owner of Birdflop. All tests were conducted with the same methodology/setup, but a disclaimer for this information is still important.
 - Confidence intervals assume that results are normally distributed. In reality, results may not be normally distributed, so the confidence intervals may be inaccurate.
 
