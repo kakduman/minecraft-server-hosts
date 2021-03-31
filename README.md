@@ -17,6 +17,7 @@ Results are standardized by setting the dedicated G4400 machine to a score of 10
 - Confidence intervals can only be generated if identical servers on at least 3 unique nodes of any host were tested. Only results with confidence intervals are shown in the above chart. Comparisons **cannot** be made between hosts with insufficient data for confidence intervals. If you would like to view all results, you can see [single-thread-results.csv](/single-thread-results.csv) for entity tick results, or [multi-thread-results.csv](/multi-thread-results.csv) for chunk generation results. Again, **DO NOT COMPARE HOSTS THAT DON'T HAVE CONFIDENCE INTERVALS.**
 - All results were analyzed by Purpur#7580, the owner of Birdflop. All tests were conducted with the same methodology/setup, but a disclaimer for this information is still important.
 - Confidence intervals assume that results are normally distributed. In reality, results may not be normally distributed, so the confidence intervals may be inaccurate.
+- If you're going to send a screenshot of the charts, please include these disclaimers alongside it.
 
 # Contributing
 ### Testing
