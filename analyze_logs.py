@@ -23,11 +23,11 @@ if multi:
                     gen_started = True
             elif i < 110:
                 if i < 0:
-                    if "âš¡" in line or "?" in line:
+                    if "âš¡" in line or "?" in line or "[⚡]" in line:
                         if ';' in line:
                             i += 1
                 else:
-                    if "âš¡" in line or "?" in line:
+                    if "âš¡" in line or "?" in line or "[⚡]" in line:
                         if ';' in line:
                             i += 1
                     elif "Task running for world" in line:
