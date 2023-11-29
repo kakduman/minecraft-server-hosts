@@ -53,8 +53,8 @@ Thank you to the following for their help expanding this experiment:
 - JustDoom#1120 for the 4GB PebbleHost Premium server.
 - DefineOutside#4497 for the 3GB PebbleHost Budget server.
 - Abby from [BloomHost](https://bloom.host) for all BloomHost servers.
+- falceso from [WinterNode](https:winternode.com) for the WinterNode server.
 - Purpur from [Birdflop Hosting](https://birdflop.com) for the Birdflop servers and the baseline dedicated server.
-- falceso from [WinterNode](https:)
 
 # Additional Notes
 - SkyNode failed the Chunk Generation test because the server kept crashing due to insufficient overhead. Support refused to lower Xmx without lowering the container size, add swap overhead, or add memory overhead.
