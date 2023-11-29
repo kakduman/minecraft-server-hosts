@@ -23,11 +23,11 @@ if multi:
                     gen_started = True
             elif i < 110:
                 if i < 0:
-                    if "âš¡" in line or "?" in line:
+                    if "âš¡" in line or "?" in line or "⚡" in line:
                         if ';' in line:
                             i += 1
                 else:
-                    if "âš¡" in line or "?" in line:
+                    if "âš¡" in line or "?" in line or "⚡" in line:
                         if ';' in line:
                             i += 1
                     elif "Task running for world" in line:
@@ -51,17 +51,16 @@ elif not multi:
                     gen_started = True
             elif i < 110:
                 if i < 0:
-                    if "âš¡" in line or "?" in line:
+                    if "âš¡" in line or "?" in line or "⚡" in line:
                         if ';' in line:
                             i += 1
                 else:
-                    if "âš¡" in line or "?" in line:
+                    if "âš¡" in line or "?" in line or "⚡" in line:
                         if ';' in line:
                             i += 1
                             line = line.replace("\n", "")
                             med = float(line.split("/")[5])
                             median_mspt_list.append(med)
-
         median_mspt_dist = statistics.NormalDist.from_samples(median_mspt_list)
         score = round(median_mspt_dist.mean, 3)
         print(f"Analyzed data from {i} minutes\n"

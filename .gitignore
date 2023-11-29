@@ -4,3 +4,4 @@ multi-thread.json
 single-thread-temp.csv
 multi-thread-temp.csv
 latest.log
+.env
